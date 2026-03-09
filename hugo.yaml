@@ -1,0 +1,41 @@
+baseURL: "https://consulting.andrewphunter.com/"
+languageCode: "en-us"
+title: "Andrew Hunter — Technical Advisory"
+theme: "consulting"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+    ordered: false
+  highlight:
+    noClasses: false
+
+outputs:
+  home: ["HTML"]
+  section: ["HTML"]
+  page: ["HTML"]
+  taxonomy: ["HTML"]
+  term: ["HTML"]
+
+disableKinds: ["taxonomy", "term"]
+
+minify:
+  disableXML: true
+  minifyOutput: true
+  tdewolff:
+    html:
+      keepQuotes: true
+
+params:
+  email: "me@andrewphunter.com"
+  blogURL: "https://andrewphunter.com"
+
+menus:
+  main:
+    - name: Contact
+      url: /contact/
+      weight: 20

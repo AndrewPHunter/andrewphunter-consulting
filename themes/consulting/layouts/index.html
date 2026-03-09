@@ -1,0 +1,109 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div class="hero-eyebrow">Fractional Advisory</div>
+  <h1 class="hero-headline">
+    Architecture decisions age badly<br>
+    <em>when deferred.</em>
+  </h1>
+  <p class="hero-body">
+    I work with early-stage and scaling teams on the problems that compound:
+    system boundaries, authority separation, delivery risk, and the governance
+    decisions that determine whether your AI investments hold up under scrutiny.
+  </p>
+  <a href="mailto:{{ .Site.Params.email }}" class="hero-cta">Start a conversation</a>
+</section>
+
+<section class="section">
+  <div class="section-label">What I do</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-title">Architecture Discussion</div>
+      <p class="service-desc">
+        A focused 1–2 hour session on a specific architectural decision, tradeoff, or constraint.
+        Useful when you need a senior perspective before committing.
+      </p>
+      <div class="service-price">$400 / hr · 1–2 hours</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-title">Architecture Review</div>
+      <p class="service-desc">
+        Deep-dive review of a system, platform, or proposed design.
+        Written assessment with specific findings and decision recommendations.
+      </p>
+      <div class="service-price">$3k–$10k · scoped engagement</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-title">Technical Due Diligence</div>
+      <p class="service-desc">
+        Pre-investment or pre-acquisition technical assessment.
+        Whether architecture and claims hold up under scrutiny.
+        Risk surfaced before it becomes reputational or financial.
+      </p>
+      <div class="service-price">$5k+ · timeline-dependent</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <div class="service-title">Fractional Advisor</div>
+      <p class="service-desc">
+        Ongoing senior judgment across architecture, delivery, and risk.
+        Advisory-first, time-bounded, explicit about scope.
+        90-day model with clear deliverables at each phase.
+      </p>
+      <div class="service-price">$15k–$25k / month · 90-day model</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">The 90-day model</div>
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-label">Days 1–30</div>
+      <div>
+        <div class="phase-title">System Formation</div>
+        <p class="phase-desc">
+          Establish boundaries, map constraints, identify the decisions that are
+          still reversible. Surface assumptions the team has stopped questioning.
+        </p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Days 31–60</div>
+      <div>
+        <div class="phase-title">De-Risking</div>
+        <p class="phase-desc">
+          Address the highest-leverage risks. Validate or revise the architecture
+          against real load, regulatory exposure, and delivery cadence.
+        </p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Days 61–90</div>
+      <div>
+        <div class="phase-title">Decision Support</div>
+        <p class="phase-desc">
+          Equip the team to operate independently. Documented decisions,
+          governance model, clear escalation paths. Exit or extend with full context.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2 class="cta-heading">
+    The best time to get architecture right is
+    <em>before scale makes it expensive.</em>
+  </h2>
+  <a href="mailto:{{ .Site.Params.email }}" class="cta-email">
+    <span class="cta-email-label">Get in touch</span>
+    <span class="cta-email-address">me@andrewphunter.com</span>
+    <span class="cta-email-arrow">→</span>
+  </a>
+</div>
+
+{{ end }}

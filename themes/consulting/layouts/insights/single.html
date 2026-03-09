@@ -1,0 +1,68 @@
+{{ define "main" }}
+{{ .Scratch.Set "lightPage" true }}
+
+<article class="article-outer">
+
+  <header>
+    <div class="article-kicker">
+      Insights · {{ .Date.Format "January 2, 2006" }}
+    </div>
+    <h1 class="article-title">{{ .Title }}</h1>
+    {{ with .Description }}
+    <p class="article-subtitle">{{ . }}</p>
+    {{ end }}
+    <div class="article-meta">
+      <span>Andrew Hunter</span>
+      <span class="article-meta-dot"></span>
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+      <span class="article-meta-dot"></span>
+      <span>{{ .ReadingTime }} min read</span>
+    </div>
+  </header>
+
+  {{ if .TableOfContents }}
+  <aside class="article-toc" aria-label="On this page">
+    <div class="toc-inner">
+      <div class="toc-label">On this page</div>
+      {{ .TableOfContents | safeHTML }}
+    </div>
+  </aside>
+  {{ end }}
+
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+
+  <div class="article-cta">
+    <span class="article-cta-label">Work with Andrew</span>
+    <p class="article-cta-text">Architecture decisions age badly when deferred.</p>
+    <a href="mailto:{{ .Site.Params.email }}" class="article-cta-link">Get in touch</a>
+  </div>
+
+</article>
+
+<script>
+(function() {
+  const toc = document.querySelector('.article-toc');
+  if (!toc) return;
+  const tocLinks = toc.querySelectorAll('a');
+  const headings = Array.from(document.querySelectorAll('.article-body h2, .article-body h3'));
+  if (!headings.length) return;
+  const linkMap = {};
+  tocLinks.forEach(a => { linkMap[decodeURIComponent(a.getAttribute('href'))] = a; });
+  let current = null;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        if (current) current.classList.remove('toc-active');
+        current = linkMap[id];
+        if (current) current.classList.add('toc-active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+  headings.forEach(h => { if (h.id) observer.observe(h); });
+})();
+</script>
+
+{{ end }}

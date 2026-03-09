@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ .Scratch.Set "lightPage" true }}
+
+<div class="insights-header">
+  <span class="insights-header-kicker">Insights</span>
+  <h1 class="insights-header-title">On systems, architecture, and the cost of getting it wrong.</h1>
+  <p class="insights-header-desc">Writing for founders, technical leaders, and investors navigating high-stakes architectural decisions.</p>
+</div>
+
+<div class="insights-list">
+  {{ range .Pages.ByDate.Reverse }}
+  <a href="{{ .RelPermalink }}" class="insight-row">
+    <span class="insight-row-date">{{ .Date.Format "Jan 2006" }}</span>
+    <div>
+      <div class="insight-row-title">{{ .Title }}</div>
+      {{ with .Description }}<div class="insight-row-desc">{{ . }}</div>{{ end }}
+    </div>
+  </a>
+  {{ end }}
+</div>
+
+{{ end }}

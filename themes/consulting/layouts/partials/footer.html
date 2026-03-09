@@ -1,0 +1,8 @@
+<footer class="site-footer{{ if .Scratch.Get "lightPage" }} light-footer{{ end }}">
+  <span class="footer-copy{{ if .Scratch.Get "lightPage" }} light{{ end }}">
+    © {{ now.Year }} Andrew Hunter
+  </span>
+  <a href="{{ .Site.Params.blogURL }}" class="footer-blog-link{{ if .Scratch.Get "lightPage" }} light{{ end }}" rel="noopener">
+    andrewphunter.com →
+  </a>
+</footer>

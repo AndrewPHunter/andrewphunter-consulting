@@ -1,0 +1,22 @@
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      Andrew Hunter
+      <span class="nav-logo-sub"> — Advisory</span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}"{{ if eq $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+      <a href="mailto:{{ .Site.Params.email }}" class="nav-cta">Get in touch</a>
+    </div>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+</script>

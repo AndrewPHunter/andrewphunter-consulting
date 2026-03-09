@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — Andrew Hunter{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Font preloads -->
+<link rel="preload" href="/fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-display-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- CSS -->
+{{ $css := slice
+  (resources.Get "css/tokens.css")
+  (resources.Get "css/reset.css")
+  (resources.Get "css/nav.css")
+  (resources.Get "css/landing.css")
+  (resources.Get "css/insights.css")
+  (resources.Get "css/contact.css")
+  (resources.Get "css/footer.css")
+}}
+{{ $style := $css | resources.Concat "css/main.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">

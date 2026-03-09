@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<div class="contact-page">
+  <span class="contact-kicker">Contact</span>
+  <h1 class="contact-title">Get in touch.</h1>
+  <div class="contact-items">
+    <a href="mailto:me@andrewphunter.com" class="contact-item">
+      <span class="contact-item-label">Email</span>
+      <span class="contact-item-value">me@andrewphunter.com</span>
+      <span class="contact-item-arrow">→</span>
+    </a>
+    <a href="https://www.linkedin.com/in/andrewphunter/" class="contact-item" rel="noopener" target="_blank">
+      <span class="contact-item-label">LinkedIn</span>
+      <span class="contact-item-value">andrewphunter</span>
+      <span class="contact-item-arrow">→</span>
+    </a>
+    <a href="{{ .Site.Params.blogURL }}" class="contact-item" rel="noopener">
+      <span class="contact-item-label">Writing</span>
+      <span class="contact-item-value">andrewphunter.com</span>
+      <span class="contact-item-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+{{ end }}
