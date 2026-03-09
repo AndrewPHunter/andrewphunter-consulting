@@ -36,6 +36,9 @@ params:
 
 menus:
   main:
+    - name: Insights
+      url: /insights/
+      weight: 10
     - name: Contact
       url: /contact/
       weight: 20

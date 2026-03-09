@@ -1,5 +1,5 @@
 .site-footer {
-  border-top: 1px solid var(--rule-dark);
+  border-top: 1px solid var(--rule-light);
   padding: var(--space-8) var(--page-gutter);
   max-width: var(--max-width);
   margin: 0 auto;
@@ -8,8 +8,9 @@
   align-items: center;
 }
 
-.site-footer.light-footer {
-  border-top-color: var(--rule-light);
+/* Landing page footer — dark surface override */
+body.dark-page .site-footer {
+  border-top-color: var(--rule-dark);
 }
 
 .footer-copy {
@@ -17,24 +18,29 @@
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--dark-muted);
+  color: var(--light-muted);
 }
 
-.footer-copy.light { color: var(--light-muted); }
+body.dark-page .footer-copy { color: var(--dark-muted); }
 
 .footer-blog-link {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--dark-muted);
+  color: var(--light-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-.footer-blog-link.light { color: var(--light-muted); }
+body.dark-page .footer-blog-link { color: var(--dark-muted); }
+
 .footer-blog-link:hover { color: var(--accent); }
 
 @media (max-width: 768px) {
-  .site-footer { flex-direction: column; gap: var(--space-3); text-align: center; }
+  .site-footer {
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: center;
+  }
 }

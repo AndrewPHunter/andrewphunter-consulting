@@ -1,11 +1,10 @@
 {{ define "main" }}
-{{ .Scratch.Set "lightPage" true }}
 
 <article class="article-outer">
 
   <header>
     <div class="article-kicker">
-      Insights · {{ .Date.Format "January 2, 2006" }}
+      <a href="/insights/">Insights</a> · {{ .Date.Format "January 2, 2006" }}
     </div>
     <h1 class="article-title">{{ .Title }}</h1>
     {{ with .Description }}
@@ -36,7 +35,7 @@
   <div class="article-cta">
     <span class="article-cta-label">Work with Andrew</span>
     <p class="article-cta-text">Architecture decisions age badly when deferred.</p>
-    <a href="mailto:{{ .Site.Params.email }}" class="article-cta-link">Get in touch</a>
+    <a href="/contact/" class="article-cta-link">Get in touch</a>
   </div>
 
 </article>

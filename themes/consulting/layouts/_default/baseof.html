@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="{{ if .Scratch.Get "lightPage" }}light-page{{ else }}dark-page{{ end }}">
+<body class="{{ if .IsHome }}dark-page{{ else }}light-page{{ end }}">
   <div class="page-wrap">
     {{ partial "nav.html" . }}
     <main>

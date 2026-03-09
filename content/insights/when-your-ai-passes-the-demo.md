@@ -1,7 +1,7 @@
 ---
 title: "When Your AI Passes the Demo — But Fails the System"
 description: "The demo works. The integration doesn't. Here's why that gap is architectural, not technical."
-date: 2026-03-10
+date: 2026-01-15
 draft: false
 ---
 
@@ -30,6 +30,8 @@ The system owner is responsible for **correctness under all conditions**. Does i
 
 These are not the same question. Treating them as equivalent is the root cause of most AI integration failures.
 
+For example, a model that accurately summarizes support tickets in a demo may receive tickets in production with formatting, attachments, or languages it was never tested against. The demo showed the capability. It did not show whether the system handles unexpected inputs, logs what happened, or fails gracefully when the model cannot produce a usable answer.
+
 ## The Architectural Questions You Are Not Asking
 
 Before your AI component graduates from demo to system, you need answers to these questions:
@@ -48,7 +50,7 @@ If the component produces a wrong answer, who is responsible for detecting it? I
 
 ### What does observability look like?
 
-When something goes wrong in production, can you reconstruct what happened? Do you have the inputs, the outputs, the model version, the context? Or do you have a user complaint and a shrug?
+Observability simply means the system records enough information about what it did and why so engineers can reconstruct what happened later. When something goes wrong in production, can you do that? Do you have the inputs, the outputs, the model version, the context? Or do you have a user complaint and a shrug?
 
 ## What to Do Instead
 
@@ -59,3 +61,9 @@ A demo is a proof of concept. It belongs behind a clearly labeled boundary. It s
 When you are ready to move from demo to system, treat it as the cross-cutting architectural change it is. Map the boundaries. Define the contracts. Identify the failure modes. Build the observability before you need it, not after.
 
 The best time to do this is before you have users. The second-best time is now.
+
+---
+
+If you're building an AI-driven product and want a second opinion on architecture or scaling risks, I offer [Architecture Discussions](/#what-i-do) — focused sessions for founders and technical teams working through real decisions.
+
+[me@andrewphunter.com](mailto:me@andrewphunter.com)
