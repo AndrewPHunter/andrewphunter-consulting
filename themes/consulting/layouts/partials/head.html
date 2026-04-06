@@ -7,6 +7,7 @@
 {{ $metaDesc := or .Description .Summary .Site.Params.description }}
 {{ $ogTitle := cond .IsHome .Site.Title (printf "%s — %s" .Title .Site.Title) }}
 {{ $ogImage := absURL "/images/social-card.png" }}
+{{ if .IsHome }}{{ $ogImage = absURL "/images/social-card-home.png" }}{{ end }}
 
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:title" content="{{ $ogTitle }}">
