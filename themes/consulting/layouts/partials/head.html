@@ -4,6 +4,27 @@
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
 
+{{ $metaDesc := or .Description .Summary .Site.Params.description }}
+{{ $ogTitle := cond .IsHome .Site.Title (printf "%s — %s" .Title .Site.Title) }}
+{{ $ogImage := absURL "/images/social-card.png" }}
+
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:description" content="{{ $metaDesc }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ $ogTitle }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $ogTitle }}">
+<meta name="twitter:description" content="{{ $metaDesc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="twitter:image:alt" content="{{ $ogTitle }}">
+
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/playfair-display-500.woff2" as="font" type="font/woff2" crossorigin>

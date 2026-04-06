@@ -33,6 +33,7 @@ minify:
 params:
   email: "me@andrewphunter.com"
   blogURL: "https://andrewphunter.com"
+  description: "Fractional advisory for system formation, architecture de-risking, and technical due diligence."
 
 menus:
   main:
