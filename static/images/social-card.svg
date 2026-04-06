@@ -1,0 +1,54 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f0f0d"/>
+  <rect x="36" y="36" width="1128" height="558" stroke="rgba(212,208,200,0.18)"/>
+  <line x1="600" y1="36" x2="600" y2="594" stroke="rgba(212,208,200,0.14)"/>
+
+  <g>
+    <line x1="72" y1="92.5" x2="98" y2="92.5" stroke="#c8351a"/>
+    <text x="112" y="97" fill="#c8351a" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="16" letter-spacing="3.2">TECHNICAL ADVISORY</text>
+  </g>
+
+  <g>
+    <text x="72" y="173" fill="#f5f3ee" font-family="'Playfair Display', Georgia, serif" font-size="64" font-weight="500">
+      <tspan x="72" dy="0">The system isn't</tspan>
+      <tspan x="72" dy="76">breaking.</tspan>
+    </text>
+    <text x="72" y="336" fill="rgba(245,243,238,0.52)" font-family="'Playfair Display', Georgia, serif" font-size="54" font-style="italic">
+      <tspan x="72" dy="0">The organization</tspan>
+      <tspan x="72" dy="64">around it</tspan>
+      <tspan x="72" dy="64">is drifting.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <text x="664" y="112" fill="rgba(245,243,238,0.38)" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="14" letter-spacing="2.8">CONSULTING.ANDREWPHUNTER.COM</text>
+
+    <text x="664" y="170" fill="#c8351a" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="13" letter-spacing="1.6">01</text>
+    <text x="704" y="174" fill="#f5f3ee" font-family="'Playfair Display', Georgia, serif" font-size="27" font-weight="500">Platform stress test</text>
+    <text x="704" y="212" fill="rgba(245,243,238,0.58)" font-family="'EB Garamond', Georgia, serif" font-size="19">
+      <tspan x="704" dy="0">Where architecture, ownership, and</tspan>
+      <tspan x="704" dy="24">operating reality drift apart.</tspan>
+    </text>
+    <line x1="704" y1="252.5" x2="1098" y2="252.5" stroke="rgba(212,208,200,0.16)"/>
+
+    <text x="664" y="324" fill="#c8351a" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="13" letter-spacing="1.6">02</text>
+    <text x="704" y="314" fill="#f5f3ee" font-family="'Playfair Display', Georgia, serif" font-size="27" font-weight="500">Technical due diligence</text>
+    <text x="704" y="352" fill="rgba(245,243,238,0.58)" font-family="'EB Garamond', Georgia, serif" font-size="19">
+      <tspan x="704" dy="0">Independent assessment of structural risk,</tspan>
+      <tspan x="704" dy="24">delivery capacity, and claims.</tspan>
+    </text>
+    <line x1="704" y1="392.5" x2="1098" y2="392.5" stroke="rgba(212,208,200,0.16)"/>
+
+    <text x="664" y="464" fill="#c8351a" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="13" letter-spacing="1.6">03</text>
+    <text x="704" y="454" fill="#f5f3ee" font-family="'Playfair Display', Georgia, serif" font-size="27" font-weight="500">Findings that support decisions</text>
+    <text x="704" y="492" fill="rgba(245,243,238,0.58)" font-family="'EB Garamond', Georgia, serif" font-size="19">
+      <tspan x="704" dy="0">Clear correction paths before reliability,</tspan>
+      <tspan x="704" dy="24">governance, or scale expose the gap.</tspan>
+    </text>
+  </g>
+
+  <g>
+    <text x="72" y="563" fill="#f5f3ee" font-family="'Playfair Display', Georgia, serif" font-size="24" font-weight="500">Andrew Hunter</text>
+    <text x="72" y="585" fill="rgba(245,243,238,0.42)" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="14" letter-spacing="2.1">DELIVERY UNDER CONSTRAINT</text>
+  </g>
+</svg>
