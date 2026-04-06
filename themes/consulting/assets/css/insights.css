@@ -226,12 +226,20 @@ body.light-page {
 
 .article-body ul,
 .article-body ol {
-  margin: 0 0 1.4em var(--space-7);
+  list-style: revert;
+  padding-left: 1.5em;
+  margin-bottom: 1.4em;
 }
 
 .article-body li {
   margin-bottom: 0.4em;
   line-height: var(--leading-loose);
+}
+
+.article-body hr {
+    border: none;
+    border-top: 1px solid #d4d0c8;
+    margin: 2.5em 0;
 }
 
 /* ── Article CTA block — appears at bottom of every article ── */
@@ -241,6 +249,8 @@ body.light-page {
   background: var(--dark-bg);
   color: var(--dark-ink);
 }
+
+
 
 .article-cta-label {
   font-family: var(--font-mono);
