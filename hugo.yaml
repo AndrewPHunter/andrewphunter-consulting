@@ -1,6 +1,6 @@
 baseURL: "https://consulting.andrewphunter.com/"
 languageCode: "en-us"
-title: "Andrew Hunter — Technical Advisory"
+title: "TGHE — The Playbook for the AI Era"
 theme: "consulting"
 
 markup:
@@ -33,13 +33,4 @@ minify:
 params:
   email: "me@andrewphunter.com"
   blogURL: "https://andrewphunter.com"
-  description: "Fractional advisory for system formation, architecture de-risking, and technical due diligence."
-
-menus:
-  main:
-    - name: Insights
-      url: /insights/
-      weight: 10
-    - name: Contact
-      url: /contact/
-      weight: 20
+  description: "TGHE: Transform, Grow, Hold, Exit. Phase-aware AI and the operational-alpha playbook for private equity."
