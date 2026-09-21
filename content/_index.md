@@ -1,4 +1,4 @@
 ---
-title: "Andrew Hunter — Technical Advisory"
-description: "Fractional advisory for system formation, architecture de-risking, and technical due diligence."
+title: "TGHE — The Playbook for the AI Era"
+description: "Phase-aware AI and the operational-alpha playbook for private equity. Transform, Grow, Hold, Exit."
 ---
