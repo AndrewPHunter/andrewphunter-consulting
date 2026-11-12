@@ -1,46 +1,62 @@
 .site-footer {
-  border-top: 1px solid var(--rule-light);
-  padding: var(--space-8) var(--page-gutter);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: var(--night);
+  color: var(--night-ink);
+  padding-block: 40px;
 }
-
-/* Landing page footer — dark surface override */
-body.dark-page .site-footer {
-  border-top-color: var(--rule-dark);
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px 40px;
 }
-
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--light-muted);
-}
-
-body.dark-page .footer-copy { color: var(--dark-muted); }
-
-.footer-blog-link {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--light-muted);
+.footer-name {
+  font-size: 1.3rem;
   text-decoration: none;
-  transition: color var(--transition-fast);
 }
-
-body.dark-page .footer-blog-link { color: var(--dark-muted); }
-
-.footer-blog-link:hover { color: var(--accent); }
-
-@media (max-width: 768px) {
-  .site-footer {
-    flex-direction: column;
-    gap: var(--space-3);
-    text-align: center;
+.footer-inner p {
+  font-size: 0.8rem;
+  color: var(--night-muted);
+  margin-top: 8px;
+}
+.footer-inner nav {
+  display: flex;
+  align-items: start;
+  gap: 28px;
+  padding-top: 5px;
+}
+.footer-inner nav a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-decoration: none;
+  padding-block: 8px;
+}
+.footer-inner nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--brass);
+}
+.footer-inner nav span {
+  color: var(--brass);
+}
+.footer-inner small {
+  grid-column: 1/-1;
+  border-top: 1px solid var(--night-rule);
+  padding-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--night-muted);
+}
+.site-footer a:focus-visible {
+  outline-color: var(--brass);
+}
+@media (max-width: 720px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .footer-inner nav {
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .footer-inner nav a {
+    font-size: 0.67rem;
   }
 }

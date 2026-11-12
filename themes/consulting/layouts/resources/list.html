@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ $catalog := partial "resources/catalog.html" . }}
+<header class="page-header container">
+  <p class="eyebrow">Resources</p>
+  <h1>Put the thinking to work.</h1>
+  <div class="page-lede">{{ .Content }}</div>
+  {{ partial "resources/topic-links.html" . }}
+</header>
+<div class="container">
+  {{ range .Site.Data.resources }}
+    {{ $topicPage := site.GetPage (printf "/resources/%s" .id) }}
+    {{ $items := where $catalog "topics" "intersect" (slice .id) }}
+    {{ $selected := where $items "selected" true }}
+    {{ if not $selected }}{{ $selected = $items }}{{ end }}
+    <section class="resource-group" id="{{ .id }}" aria-labelledby="{{ .id }}-heading">
+      <div>
+        <p class="eyebrow">{{ .topic }}</p>
+        <h2 id="{{ .id }}-heading">{{ .title }}</h2>
+        <p class="group-description">{{ .description }}</p>
+        <a class="text-link topic-all" href="{{ $topicPage.RelPermalink }}">Browse this topic <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="resource-list">
+        {{ range first 3 $selected }}{{ partial "resource-row.html" . }}{{ end }}
+      </div>
+    </section>
+  {{ end }}
+</div>
+{{ partial "resources/training-cta.html" . }}
+{{ end }}

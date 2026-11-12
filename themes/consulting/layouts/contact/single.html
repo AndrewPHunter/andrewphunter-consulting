@@ -1,25 +1,3 @@
 {{ define "main" }}
-
-<div class="contact-page">
-  <span class="contact-kicker">Contact</span>
-  <h1 class="contact-title">Get in touch.</h1>
-  <div class="contact-items">
-    <a href="mailto:me@andrewphunter.com" class="contact-item">
-      <span class="contact-item-label">Email</span>
-      <span class="contact-item-value">me@andrewphunter.com</span>
-      <span class="contact-item-arrow">→</span>
-    </a>
-    <a href="https://www.linkedin.com/in/andrewphunter/" class="contact-item" rel="noopener" target="_blank">
-      <span class="contact-item-label">LinkedIn</span>
-      <span class="contact-item-value">andrewphunter</span>
-      <span class="contact-item-arrow">→</span>
-    </a>
-    <a href="{{ .Site.Params.blogURL }}" class="contact-item" rel="noopener">
-      <span class="contact-item-label">Writing</span>
-      <span class="contact-item-value">andrewphunter.com</span>
-      <span class="contact-item-arrow">→</span>
-    </a>
-  </div>
-</div>
-
+<section class="contact-page container"><header class="page-header"><p class="eyebrow">Work with me</p><h1>Let's talk about what you're working on.</h1></header><div class="contact-grid"><div class="prose"><p>If you could use another experienced person working through the technical decisions with you, send me a note.</p><p>A little context is enough to start: what you're trying to do, where you're getting stuck, and any timing that matters. We can talk through whether an ongoing advisory relationship, a focused review, or a session with your team would be useful.</p><p>I'm based in the Phoenix area and work remotely, with travel for time together when it helps.</p></div><div class="contact-details"><p class="eyebrow">Email me directly</p><a class="contact-email" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }} <span aria-hidden="true">↗</span></a><p>If you came here from a talk, guide, or introduction, feel free to mention it.</p><a class="text-link" href="{{ .Site.Params.linkedinURL }}">Find me on LinkedIn <span aria-hidden="true">↗</span></a></div></div></section>
 {{ end }}

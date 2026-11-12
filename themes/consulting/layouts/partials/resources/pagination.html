@@ -1,0 +1,18 @@
+{{ if gt .TotalPages 1 }}
+<nav class="resource-pagination" aria-label="Resource pages">
+  {{ if .HasPrev }}<a href="{{ .Prev.URL }}#collection-heading" rel="prev">← Previous</a>{{ end }}
+  <ol>
+    {{ $current := .PageNumber }}
+    {{ $total := .TotalPages }}
+    {{ $last := 0 }}
+    {{ range .Pagers }}
+      {{ if or (eq .PageNumber 1) (eq .PageNumber $total) (le (math.Abs (sub .PageNumber $current)) 1) }}
+        {{ if gt (sub .PageNumber $last) 1 }}<li class="pagination-gap" aria-hidden="true">…</li>{{ end }}
+        <li><a href="{{ .URL }}#collection-heading" aria-label="Page {{ .PageNumber }}"{{ if eq .PageNumber $current }} aria-current="page"{{ end }}>{{ .PageNumber }}</a></li>
+        {{ $last = .PageNumber }}
+      {{ end }}
+    {{ end }}
+  </ol>
+  {{ if .HasNext }}<a href="{{ .Next.URL }}#collection-heading" rel="next">Next →</a>{{ end }}
+</nav>
+{{ end }}

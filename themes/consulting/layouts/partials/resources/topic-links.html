@@ -1,0 +1,8 @@
+<nav class="topic-links" aria-label="Resource topics">
+  {{- $current := .Params.resource_topic -}}
+  {{- range .Site.Data.resources }}
+    {{- $topicPage := site.GetPage (printf "/resources/%s" .id) }}
+    <a href="{{ $topicPage.RelPermalink }}"{{ if eq $current .id }} aria-current="page"{{ end }}>{{ .topic }} <span aria-hidden="true">→</span></a>
+  {{- end }}
+  <a href="/resources/search/">Search all resources <span aria-hidden="true">→</span></a>
+</nav>

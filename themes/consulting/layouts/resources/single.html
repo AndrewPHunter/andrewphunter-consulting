@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{ $page := . }}
+{{ $catalog := partial "resources/catalog.html" . }}
+{{ $kind := index (dict "training" "Training" "deck" "Slide deck" "guide" "Guide") .Params.resource_type }}
+<article class="material-page">
+  <header class="page-header container">
+    <p class="eyebrow"><a href="/resources/">Resources</a> / {{ $kind }}{{ if .Draft }} / Draft preview{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-lede">{{ . }}</p>{{ end }}
+    <nav class="topic-links" aria-label="Topics for this resource">
+      {{ range .Params.resource_topics }}
+        {{ with site.GetPage (printf "/resources/%s" .) }}<a href="{{ .RelPermalink }}">{{ .Title }} <span aria-hidden="true">→</span></a>{{ end }}
+      {{ end }}
+    </nav>
+  </header>
+  {{ $hasDetails := or .Params.audience .Params.duration .Params.downloads .Params.recording_url }}
+  <div class="container material-layout{{ if not $hasDetails }} material-layout--reading{{ end }}">
+    {{ if $hasDetails }}
+      <aside class="material-details" aria-label="Resource details and materials">
+        {{ if or .Params.audience .Params.duration }}
+          <dl>
+            {{ with .Params.audience }}<dt>Who it's for</dt><dd>{{ . }}</dd>{{ end }}
+            {{ with .Params.duration }}<dt>Time to set aside</dt><dd>{{ . }}</dd>{{ end }}
+          </dl>
+        {{ end }}
+        {{ with .Params.downloads }}
+          <h2>Materials</h2>
+          <ul class="material-downloads">
+            {{ range . }}
+              {{ $label := .label }}
+              {{ with $page.Resources.Get .file }}
+                <li><a class="text-link" href="{{ .RelPermalink }}" download>{{ $label }} <span aria-hidden="true">↓</span></a></li>
+              {{ else }}
+                {{ errorf "%s: download %q is missing from the page bundle" $page.File.Path .file }}
+              {{ end }}
+            {{ end }}
+          </ul>
+        {{ end }}
+        {{ with .Params.recording_url }}<a class="text-link" href="{{ . }}">Watch the recording <span aria-hidden="true">↗</span></a>{{ end }}
+      </aside>
+    {{ end }}
+    <div class="prose material-body">{{ .Content }}</div>
+  </div>
+  {{ with .Params.related_resources }}
+    <section class="container material-related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Keep working through it.</h2>
+      <div class="resource-list">
+        {{ range . }}
+          {{ $matches := where $catalog "id" . }}
+          {{ if $matches }}
+            {{ range $matches }}{{ partial "resource-row.html" . }}{{ end }}
+          {{ else }}
+            {{ errorf "%s: related resource %q is unknown or unpublished" $page.File.Path . }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+</article>
+{{ partial "resources/training-cta.html" . }}
+{{ end }}

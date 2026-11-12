@@ -1,115 +1,51 @@
 {{ define "main" }}
-
-<section class="hero tghe-hero">
-  <div class="hero-eyebrow">The Playbook for the AI Era</div>
-  <div class="tghe-stack">
-    <span class="tghe-word"><span class="tghe-initial">T</span>ransform</span>
-    <span class="tghe-word"><span class="tghe-initial">G</span>row</span>
-    <span class="tghe-word"><span class="tghe-initial">H</span>old</span>
-    <span class="tghe-word"><span class="tghe-initial">E</span>xit</span>
-  </div>
-  <p class="hero-declaration">The playbook was always there. AI just raised the stakes.</p>
+{{ with resources.Get "images/advisory-worktable.png" }}
+  {{ $small := .Resize "800x webp q82" }}{{ $medium := .Resize "1440x webp q85" }}{{ $large := .Resize "2048x webp q85" }}
+  <div class="home-art"><img src="{{ $medium.RelPermalink }}" srcset="{{ $small.RelPermalink }} 800w, {{ $medium.RelPermalink }} 1440w, {{ $large.RelPermalink }} 2048w" sizes="100vw" width="{{ .Width }}" height="{{ .Height }}" fetchpriority="high" alt="Two notebooks and a shared system diagram on a wooden worktable, lit by a brass lamp beside a window onto the forest at night."></div>
+{{ end }}
+<section class="home-intro container" aria-labelledby="home-heading">
+  <div><p class="eyebrow">Independent technical advisory</p><h1 id="home-heading">{{ .Params.headline | safeHTML }}</h1></div>
+  <div class="intro-copy"><p>{{ .Params.intro }}</p><div class="intro-actions"><a class="button" href="/contact/">Work with me <span aria-hidden="true">→</span></a><a class="text-link" href="/resources/">Explore the resources <span aria-hidden="true">→</span></a></div></div>
 </section>
-
-<section class="band surface-light">
-  <div class="wrap thesis">
-    <p class="thesis-body">
-      Alpha must be made now, not bought. What the consensus leaves unsaid is that it is made or missed on
-      phase. The value thesis was always a lifecycle — Transform, Grow, Hold, Exit — and each leg carries a
-      different bet: a different tolerance for risk, a different return on the same capability. AI did not add a
-      lever. It raised the price of using the levers you already have out of phase. Twelve where five used to
-      do is not a technology problem. It is a phase problem.
-    </p>
+<section class="section container" id="advisory" aria-labelledby="advisory-heading">
+  <div class="section-heading"><p class="eyebrow">Where I can help</p><h2 id="advisory-heading">When the next decision<br> needs a closer look.</h2></div>
+  <div class="question-list">
+    <article class="question-row"><h3>Will this approach hold up?</h3><div><p>A proposed architecture, a vendor promise, or a growing platform. I work through the implementation, dependencies, and operating constraints with your team so you can decide what to keep, what to change, and what needs testing.</p><span class="detail-label">Architecture · Technical reviews · Build or buy</span></div></article>
+    <article class="question-row"><h3>How do we make AI useful here?</h3><div><p>We look at the work you need to get done, then work through where models and agents fit. That includes the data they can use, the actions they can take, how the harness is built, and how you'll know the result is reliable.</p><span class="detail-label">AI platforms · Agent harnesses · Evaluation</span></div></article>
+    <article class="question-row"><h3>What is getting in the team's way?</h3><div><p>Delivery problems often cross the boundaries on the org chart. I help trace them through the systems, team responsibilities, and review process, then work with your leads on changes they can carry into everyday engineering.</p><span class="detail-label">Delivery · Engineering practices · Team development</span></div></article>
   </div>
 </section>
-
-<section class="band surface-dark">
-  <div class="wrap">
-    <div class="section-label">Phase blindness</div>
-    <p class="prose-lede">
-      Every value-creation plan is underwritten against something. The default is to underwrite against the
-      technology's cycle — the capability that is ascendant, the one the board walked in asking about — instead
-      of the asset's lifecycle. That is the error. The bet has to be underwritten against the asset's phase,
-      and the return that phase was bought to produce. Drop a
-      transform-era bet into a hold and it does not just miss the base case. It works against the equity story,
-      spending the de-risked cash flow the thesis underwrote for the exit. Alpha is not a function of how
-      advanced the capability is. It is a function of whether the phase can bank it.
-    </p>
+<section class="working-section" aria-labelledby="working-heading">
+  <div class="container working-grid">
+    <div><p class="eyebrow">Working together</p><h2 id="working-heading">An ongoing technical partner.</h2><p class="working-intro">Someone who knows the context, can challenge a proposal, and stays involved as the work moves forward.</p></div>
+    <div class="working-copy"><p>I work alongside you and your engineering leads, getting close enough to the systems to give useful advice. We can move from a business question to a design review, into the code, and back to the decision you need to make.</p><p>We agree on the scope and a working cadence that fits your team. That can include reviewing designs and partner work, working through difficult decisions, and helping engineers build the judgment to carry the changes forward.</p><div class="starting-point"><h3>A focused place to start</h3><p>A review of a proposed approach, a working session on a difficult system, or training built around your team's actual work. We define a useful outcome and the work needed to get there.</p><a class="text-link" href="/contact/">Talk through an engagement <span aria-hidden="true">→</span></a></div></div>
   </div>
 </section>
-
-<section class="band surface-light">
-  <div class="wrap">
-    <div class="section-label">The four bets</div>
-    <div class="bets-grid">
-      <div class="bet-card">
-        <span class="bet-initial">T</span>
-        <div class="bet-name">Transform</div>
-        <p class="bet-desc">The structural remake. Reset the cost base, redraw the operating model, rebuild capability. The biggest AI bet lives here, and it is the leg most often faked: underwritten as transformation, funded as a migration.</p>
-      </div>
-      <div class="bet-card">
-        <span class="bet-initial">G</span>
-        <div class="bet-name">Grow</div>
-        <p class="bet-desc">AI as an EBITDA multiplier. Margin, pricing, productivity, cost-to-serve. It has to show up in the numbers, because Grow is where the alpha is banked.</p>
-      </div>
-      <div class="bet-card">
-        <span class="bet-initial">H</span>
-        <div class="bet-name">Hold</div>
-        <p class="bet-desc">AI as efficiency and de-risking. Incremental, governed, protecting the cash flow the exit is underwritten on.</p>
-      </div>
-      <div class="bet-card">
-        <span class="bet-initial">E</span>
-        <div class="bet-name">Exit</div>
-        <p class="bet-desc">AI as a diligence narrative. Legible and defensible in the data room, a credit to the multiple, not a red flag.</p>
-      </div>
-    </div>
-    <p class="bets-turn">
-      The capability is the same on every leg. The bet is not. Matching the bet to the phase, leg by leg, is
-      not a tooling decision. It is an architecture decision, and it belongs to a seat most cap tables do not
-      have.
-    </p>
+<section class="section container experience-section" id="experience" aria-labelledby="experience-heading">
+  <div class="section-heading"><p class="eyebrow">The work behind the advice</p><h2 id="experience-heading">Leadership, architecture,<br> and implementation.</h2><a class="text-link" href="/about/">More about me <span aria-hidden="true">→</span></a></div>
+  <div class="experience-list">
+    <article>
+      <h3>AI</h3>
+      <p>I've built AI platforms and internal agents that teams use in everyday work, including mapping system dependencies and preparing code changes for review. Getting a return means choosing useful problems and accounting for the integration, evaluation, and operating costs. I bring the engineering and business judgment to work through both.</p>
+    </article>
+    <article>
+      <h3>Transformation</h3>
+      <p>My career has included transformations at progressively larger scales, from a client platform to an engineering organization to an enterprise. That work connects business priorities, system architecture, and the sequence of changes teams can carry out while the business keeps running. I've worked through those decisions with executives and implemented the changes alongside engineers.</p>
+    </article>
+    <article>
+      <h3>Leadership & delivery</h3>
+      <p>I've led engineering teams, developed managers and technical leads, and restored delivery reliability. That experience also shapes how I use coding agents: clear responsibilities, bounded work, and review that checks what was actually built. The aim is to help engineers manage more work while retaining the judgment and accountability needed to ship it.</p>
+    </article>
+    <article>
+      <h3>Public work</h3>
+      <p>I build inference engines, model investigation tools, and GPU performance experiments to work through questions I want to understand. I publish the code, measurements, and reasoning, including approaches that didn't hold up. You can inspect the work and follow how I arrived at a conclusion.</p>
+      <a class="text-link" href="{{ .Site.Params.labURL }}">Explore Plainsight Systems <span aria-hidden="true">↗</span></a>
+    </article>
   </div>
 </section>
-
-<section class="band surface-dark">
-  <div class="wrap">
-    <div class="section-label">The missing seat</div>
-    <p class="prose-lede">Every failure across the four legs is the same failure. No one owns the phase.</p>
-    <p class="prose-body">
-      The CIO keeps the stack running. The CTO builds the product. The operating partner owns the number. The
-      Chief Transformation Officer owns the program — the plan, the milestones, the number it has to hit. The
-      board underwrote the thesis. Every one of those seats is real, and filled, and not one of them owns the
-      translation of the thesis into a sequenced, phase-aware target state, or runs the remake the Transform
-      leg was supposed to be.
-    </p>
-    <p class="prose-body">
-      The obvious objection is the transformation officer. That seat owns the program, not the architecture.
-      Owning a plan is not owning its translation into a buildable, phase-sequenced target state, and it is
-      not running the remake. The officer cannot build it. The CTO does not own the arc. The work that joins
-      them is improvised on every deal, and the improvisation is why Transform gets funded as a migration.
-    </p>
-    <p class="seat-name">That gap is its own seat. <em>The Chief Transformation Architect.</em></p>
-    <p class="prose-body">
-      It owns what neither side does: matching the bet to the phase, translating the thesis into a target
-      state, and sequencing the remake so each leg sets up the next. Not the plan, the architecture. Not the
-      migration, the remake. It is the seat that makes twelve reachable instead of underwritten and missed.
-    </p>
-    <p class="prose-body seat-close">Most cap tables do not have it. That is why the bets fail.</p>
-  </div>
+<section class="section container resources-preview" aria-labelledby="resources-heading">
+  <div class="section-heading inline-heading"><div><p class="eyebrow">Read, use, share</p><h2 id="resources-heading">A few places to start.</h2></div><a class="text-link" href="/resources/">All resources <span aria-hidden="true">→</span></a></div>
+  <div class="resource-list">{{ range first 3 (where (partial "resources/catalog.html" .) "featured" true) }}{{ partial "resource-row.html" . }}{{ end }}</div>
 </section>
-
-<section class="band surface-light contact" id="contact">
-  <div class="wrap">
-    <div class="section-label">Contact</div>
-    <p class="contact-body">
-      Advisory to private equity firms and the companies they hold. I take a small number of engagements at a
-      time. The first step is a conversation.
-    </p>
-    <a href="mailto:{{ .Site.Params.email }}" class="cta-email">
-      <span class="cta-email-address">{{ .Site.Params.email }}</span>
-      <span class="cta-email-arrow">→</span>
-    </a>
-  </div>
-</section>
-
+{{ partial "contact-cta.html" . }}
 {{ end }}

@@ -32,8 +32,11 @@ jobs:
           hugo-version: "0.154.2"
           extended: true
 
+      - name: Check resource publishing and search
+        run: python3 scripts/check-resources.py
+
       - name: Build site
-        run: hugo --minify
+        run: hugo --minify --cleanDestinationDir
 
       - name: Deploy (Wrangler)
         env:

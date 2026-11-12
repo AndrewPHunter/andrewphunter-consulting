@@ -1,0 +1,5 @@
+<a class="resource-row" href="{{ .url }}">
+  <span class="resource-kind">{{ .kind }}</span>
+  <div><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
+  <span class="row-arrow" aria-hidden="true">{{ if .external }}↗{{ else }}→{{ end }}</span>
+</a>

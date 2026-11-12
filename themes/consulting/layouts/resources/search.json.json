@@ -1,0 +1,9 @@
+{{- $items := slice -}}
+{{- range partial "resources/catalog.html" . -}}
+  {{- $body := "" -}}
+  {{- if not .external -}}{{- $body = .page.Plain -}}{{- end -}}
+  {{- $items = $items | append (dict "id" .id "title" .title "description" .description "kind" .kind "format" .format "url" .url "topics" .topics "external" .external "body" $body) -}}
+{{- end -}}
+{{- $topics := slice -}}
+{{- range .Site.Data.resources -}}{{- $topics = $topics | append (dict "id" .id "label" .topic) -}}{{- end -}}
+{{- dict "items" $items "topics" $topics "formats" .Site.Data.resource_formats | jsonify -}}

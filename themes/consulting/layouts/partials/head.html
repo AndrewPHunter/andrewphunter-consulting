@@ -1,48 +1,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — Andrew Hunter{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-<link rel="canonical" href="{{ .Permalink }}">
-
-{{ $metaDesc := or .Description .Summary .Site.Params.description }}
-{{ $ogTitle := cond .IsHome .Site.Title (printf "%s — %s" .Title .Site.Title) }}
-{{ $ogImage := absURL "/images/social-card-tghe.png" }}
-{{ if .IsHome }}{{ $ogImage = absURL "/images/social-card-home-tghe.png" }}{{ end }}
-
-<meta property="og:site_name" content="{{ .Site.Title }}">
-<meta property="og:title" content="{{ $ogTitle }}">
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:description" content="{{ $metaDesc }}">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="{{ $ogImage }}">
+{{ $title := cond .IsHome .Site.Title (printf "%s | Andrew Hunter" .Title) }}
+{{ $canonical := .Permalink }}
+{{ if .Params.resource_topic }}
+  {{ $pager := partial "resources/pager.html" . }}
+  {{ if gt $pager.PageNumber 1 }}
+    {{ $title = printf "%s — Page %d | Andrew Hunter" .Title $pager.PageNumber }}
+    {{ $canonical = $pager.URL | absURL }}
+  {{ end }}
+{{ end }}
+{{ $description := or .Description .Site.Params.description }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="theme-color" content="#0e1524">
+{{ if .Draft }}<meta name="robots" content="noindex,nofollow">{{ end }}
+<link rel="canonical" href="{{ $canonical }}">
+{{ $image := (resources.Get "images/advisory-worktable.png").Fill "1200x630 webp q85" }}
+<meta property="og:site_name" content="Andrew Hunter | Technical Advisory">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:type" content="{{ if eq .Section "resources" }}{{ if .IsPage }}article{{ else }}website{{ end }}{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $image.Permalink }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{ $ogTitle }}">
-
+<meta property="og:image:alt" content="A shared worktable with diagrams and notebooks under a brass lamp.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $ogTitle }}">
-<meta name="twitter:description" content="{{ $metaDesc }}">
-<meta name="twitter:image" content="{{ $ogImage }}">
-<meta name="twitter:image:alt" content="{{ $ogTitle }}">
-
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-<!-- Font preloads -->
-<link rel="preload" href="/fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/playfair-display-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-
-<!-- CSS -->
-{{ $css := slice
-  (resources.Get "css/tokens.css")
-  (resources.Get "css/reset.css")
-  (resources.Get "css/nav.css")
-  (resources.Get "css/landing.css")
-  (resources.Get "css/insights.css")
-  (resources.Get "css/contact.css")
-  (resources.Get "css/footer.css")
-}}
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $image.Permalink }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="preload" href="/fonts/PlexSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/PlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+{{ $css := slice (resources.Get "css/tokens.css") (resources.Get "css/reset.css") (resources.Get "css/nav.css") (resources.Get "css/landing.css") (resources.Get "css/prose.css") (resources.Get "css/resources.css") (resources.Get "css/contact.css") (resources.Get "css/footer.css") }}
 {{ $style := $css | resources.Concat "css/main.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">

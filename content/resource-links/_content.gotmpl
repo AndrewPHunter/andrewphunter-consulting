@@ -1,0 +1,6 @@
+{{/* Non-rendered page records let Hugo paginate external and local resources together. */}}
+{{ range .Site.Data.resources }}
+  {{ range .items }}
+    {{ $.AddPage (dict "path" .id "title" .title "kind" "page" "build" (dict "render" "never" "list" "never") "sitemap" (dict "disable" true) "params" (dict "catalog_id" .id)) }}
+  {{ end }}
+{{ end }}

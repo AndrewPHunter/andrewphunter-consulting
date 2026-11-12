@@ -1,0 +1,3 @@
+# Local filesystem metadata is not part of the site.
+**/.DS_Store
+**/._*

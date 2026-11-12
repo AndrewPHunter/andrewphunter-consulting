@@ -1,6 +1,7 @@
 <footer class="site-footer">
-  <span class="footer-copy">© {{ now.Year }} Andrew Hunter</span>
-  <a href="{{ .Site.Params.blogURL }}" class="footer-blog-link" rel="noopener">
-    andrewphunter.com →
-  </a>
+  <div class="container footer-inner">
+    <div><a class="footer-name" href="/">Andrew Hunter</a><p>Chief Architect & Technical Advisor</p></div>
+    <nav aria-label="Elsewhere"><a href="{{ .Site.Params.blogURL }}">Writing <span aria-hidden="true">↗</span></a><a href="{{ .Site.Params.labURL }}">Plainsight Systems <span aria-hidden="true">↗</span></a><a href="{{ .Site.Params.linkedinURL }}">LinkedIn <span aria-hidden="true">↗</span></a></nav>
+    <small>© {{ now.Year }} Andrew Hunter</small>
+  </div>
 </footer>

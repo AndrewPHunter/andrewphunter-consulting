@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {{ partial "head.html" . }}
-</head>
-<body class="{{ if .IsHome }}dark-page{{ else }}light-page{{ end }}">
-  <div class="page-wrap">
-    {{ partial "nav.html" . }}
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
-    {{ partial "footer.html" . }}
-  </div>
+<head>{{ partial "head.html" . }}</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{ partial "nav.html" . }}
+  <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+  {{ partial "footer.html" . }}
 </body>
 </html>

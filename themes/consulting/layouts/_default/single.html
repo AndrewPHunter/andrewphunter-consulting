@@ -1,0 +1,4 @@
+{{ define "main" }}
+<article class="about-page container"><header class="page-header"><p class="eyebrow">{{ .Params.kicker }}</p><h1>{{ or .Params.headline .Title }}</h1></header><div class="about-grid"><aside><p class="about-name">Andrew Hunter</p><p>Chief Architect &<br>Technical Advisor</p><p class="about-location">Based in the Phoenix area.<br>Remote engagements with travel.</p><a class="text-link" href="/contact/">Get in touch <span aria-hidden="true">→</span></a></aside><div class="prose">{{ .Content }}</div></div></article>
+{{ partial "contact-cta.html" . }}
+{{ end }}

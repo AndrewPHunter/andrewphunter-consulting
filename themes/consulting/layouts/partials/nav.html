@@ -1,5 +1,11 @@
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">Andrew Hunter</a>
+<header class="site-header">
+  <div class="site-nav container">
+    <a class="wordmark" href="/" aria-label="Andrew Hunter advisory home">Andrew Hunter<span>Technical advisory</span></a>
+    <nav aria-label="Main navigation">
+      <a href="/#advisory"{{ if .IsHome }} aria-current="page"{{ end }}>Advisory</a>
+      <a href="/resources/"{{ if eq .Section "resources" }} aria-current="page"{{ end }}>Resources</a>
+      <a href="/about/"{{ if eq .Section "about" }} aria-current="page"{{ end }}>About</a>
+      <a href="/contact/" class="nav-contact"{{ if eq .Section "contact" }} aria-current="page"{{ end }}>Contact <span aria-hidden="true">→</span></a>
+    </nav>
   </div>
-</nav>
+</header>

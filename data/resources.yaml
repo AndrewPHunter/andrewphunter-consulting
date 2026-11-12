@@ -1,0 +1,66 @@
+- id: architecture
+  topic: Architecture and delivery
+  title: Understand what you're changing.
+  description: Before committing to a plan, establish what the systems do today, how they depend on each other, and what the business needs from them.
+  items:
+    - id: read-the-estate
+      title: Read the Estate
+      selected: true
+      weight: 10
+      kind: Essay
+      format: essay
+      url: https://andrewphunter.com/writing/read-the-estate/
+      description: Use code and schema evidence to understand dependencies before deciding how to change a system.
+      featured: true
+    - id: transformation-under-scale
+      title: Transformation Under Scale
+      selected: true
+      weight: 20
+      kind: Series
+      format: series
+      url: https://andrewphunter.com/series/transformation-under-scale/
+      description: Work through the transformation process, from understanding the estate to carrying decisions into delivery.
+- id: governance
+  topic: AI and governance
+  title: Make authority and responsibility explicit.
+  description: AI adoption brings familiar questions into sharper focus. Who can act, what can they change, and how do you establish what happened?
+  items:
+    - id: governance-under-scale
+      title: Governance Under Scale
+      selected: true
+      weight: 11
+      kind: Series
+      format: series
+      url: https://andrewphunter.com/series/governance-under-scale/
+      description: Delegated authority, enforceable boundaries, and operating controls as systems and organizations grow.
+      featured: true
+    - id: naic-crosswalk
+      title: Model Selection, NAIC, and the Crosswalk
+      selected: true
+      weight: 21
+      kind: Essay & reference tables
+      format: essay
+      url: https://andrewphunter.com/writing/naic-and-the-crosswalk/
+      description: A comparison of AI governance frameworks and the system controls they ask you to put in place.
+- id: engineering
+  topic: Engineering in practice
+  title: Follow the work into the implementation.
+  description: Public code and technical explanations from building inference engines, investigating model behavior, and measuring GPU performance.
+  items:
+    - id: plainsight-systems
+      title: Plainsight Systems
+      selected: true
+      weight: 12
+      kind: Projects & engineering notes
+      format: project
+      url: https://plainsight-systems.com/
+      description: Working systems, source code, measurements, and the reasoning behind the implementation.
+      featured: true
+    - id: cradle
+      title: Cradle
+      selected: true
+      weight: 22
+      kind: Build-along lessons
+      format: lesson
+      url: https://cradle.plainsight-systems.com/
+      description: Build a transformer in C#, introducing the machinery and the math as the implementation needs them.

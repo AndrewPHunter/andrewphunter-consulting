@@ -1,0 +1,37 @@
+{{ define "main" }}
+<header class="page-header container">
+  <p class="eyebrow"><a href="/resources/">Resources</a></p>
+  <h1>Find something useful.</h1>
+  <div class="page-lede">{{ .Content }}</div>
+</header>
+<section class="container resource-search" data-resource-search data-index="{{ (.OutputFormats.Get "JSON").RelPermalink }}" aria-label="Search the resource library">
+  <noscript><p>Search needs JavaScript. You can browse every resource by topic:</p>{{ partial "resources/topic-links.html" . }}</noscript>
+  <div data-search-app hidden>
+    <form class="resource-search-form" action="/resources/search/" method="get" role="search">
+      <div class="search-query">
+        <label for="resource-query">Search the library</label>
+        <input id="resource-query" type="search" name="q" placeholder="Try agent harnesses or governance" maxlength="200" autocomplete="off">
+      </div>
+      <div>
+        <label for="resource-topic">Topic</label>
+        <select id="resource-topic" name="topic"><option value="">All topics</option></select>
+      </div>
+      <div>
+        <label for="resource-format">Format</label>
+        <select id="resource-format" name="format"><option value="">All formats</option></select>
+      </div>
+      <button class="button" type="submit">Search <span aria-hidden="true">→</span></button>
+    </form>
+    <div class="search-summary">
+      <p data-search-status role="status" aria-live="polite" aria-atomic="true">Loading the resource library…</p>
+      <button class="text-link" type="button" data-search-clear hidden>Clear search and filters</button>
+    </div>
+    <div data-search-results class="resource-list" tabindex="-1" aria-label="Search results"></div>
+    <nav class="resource-pagination" data-search-pagination aria-label="Search result pages" hidden></nav>
+    <button class="text-link" type="button" data-search-retry hidden>Try again</button>
+  </div>
+</section>
+{{ partial "resources/training-cta.html" . }}
+{{ $script := resources.Get "js/resource-search.mjs" | resources.Minify | resources.Fingerprint }}
+<script type="module" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}

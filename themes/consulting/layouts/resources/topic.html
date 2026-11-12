@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{ $catalog := partial "resources/catalog.html" . }}
+{{ $topic := .Params.resource_topic }}
+{{ $items := where $catalog "topics" "intersect" (slice $topic) }}
+{{ $pager := partial "resources/pager.html" . }}
+<header class="page-header container">
+  <p class="eyebrow"><a href="/resources/">Resources</a></p>
+  <h1>{{ .Title }}</h1>
+  <div class="page-lede">{{ .Content }}</div>
+  {{ partial "resources/topic-links.html" . }}
+</header>
+<section class="container topic-collection" aria-labelledby="collection-heading">
+  <div class="collection-heading">
+    <h2 id="collection-heading">Explore the work.</h2>
+    <p class="resource-kind">{{ if gt $pager.TotalPages 1 }}{{ add (mul (sub $pager.PageNumber 1) 12) 1 }}–{{ math.Min (mul $pager.PageNumber 12) $pager.TotalNumberOfElements }} of {{ end }}{{ len $items }} {{ if eq (len $items) 1 }}resource{{ else }}resources{{ end }}</p>
+  </div>
+  <div class="resource-list">
+    {{ range $pager.Pages }}
+      {{ $id := .Params.catalog_id }}
+      {{ if not $id }}{{ $id = default .File.ContentBaseName .Params.resource_id }}{{ end }}
+      {{ range where $items "id" $id }}{{ partial "resource-row.html" . }}{{ end }}
+    {{ end }}
+  </div>
+  {{ partial "resources/pagination.html" $pager }}
+</section>
+{{ partial "resources/training-cta.html" . }}
+{{ end }}
