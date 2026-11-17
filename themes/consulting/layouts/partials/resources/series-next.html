@@ -1,0 +1,13 @@
+{{ $page := . }}
+{{ with .Params.resource_series }}
+  {{ $series := site.GetPage (printf "/resources/%s" .) }}
+  {{ $position := int $page.Params.resource_series_order }}
+  <nav class="container series-next" aria-label="Continue the series">
+    {{ if gt $position 1 }}
+      {{ with site.GetPage (printf "/resources/%s" (index $series.Params.series_parts (sub $position 2))) }}<a href="{{ .RelPermalink }}"><span class="eyebrow">Previous deck</span>← {{ .Title }}</a>{{ end }}
+    {{ else }}<a href="{{ $series.Params.essay.url }}"><span class="eyebrow">Before this deck</span>Read the essay ↗</a>{{ end }}
+    {{ if lt $position (len $series.Params.series_parts) }}
+      {{ with site.GetPage (printf "/resources/%s" (index $series.Params.series_parts $position)) }}<a href="{{ .RelPermalink }}"><span class="eyebrow">Next deck</span>{{ .Title }} →</a>{{ end }}
+    {{ else }}<a href="{{ $series.RelPermalink }}"><span class="eyebrow">All three decks</span>Back to the series →</a>{{ end }}
+  </nav>
+{{ end }}

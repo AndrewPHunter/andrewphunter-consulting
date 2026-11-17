@@ -1,4 +1,4 @@
-{{- $items := where (partial "resources/catalog.html" .) "topics" "intersect" (slice .Params.resource_topic) -}}
+{{- $items := where (where (partial "resources/catalog.html" .) "listed" true) "topics" "intersect" (slice .Params.resource_topic) -}}
 {{- $pages := slice -}}
 {{- range $items -}}{{- $pages = $pages | append .page -}}{{- end -}}
 {{- return (.Paginate $pages 12) -}}

@@ -81,12 +81,13 @@ unpublished related resources fail the build with the source file identified.
 
 | Front matter | Effect |
 | --- | --- |
-| `resource_type: training` | Display label: Training. Also supports `deck` and `guide`. |
+| `resource_type: training` | Display label: Training. Also supports `deck`, `guide`, and `series`. |
 | `resource_topics: [engineering, governance]` | Automatically includes the page in both topic collections. |
 | `resource_selected: true` | Eligible for the three-item selection under each topic on Resources. |
 | `resource_featured: true` | Eligible for the three-item resource preview on the homepage. |
 | `resource_weight: 100` | Lower numbers sort first. At the same weight, newer local materials appear first. |
 | `audience` / `duration` | Optional details beside the material, omitted when empty. |
+| `resource_series` / `resource_series_order` | Connect a deck to its series and numbered position. The series appears in browsing lists; its decks remain individually searchable. |
 
 The current external selections have weights 10–22. To put a new resource ahead
 of them, choose a lower weight, or unselect an older item. Homepage features are
@@ -94,6 +95,46 @@ a separate choice from the Resources selection. Topic pages include the full
 collection across pages of 12. If a topic has no selections, Resources uses its first three entries.
 
 ## Link from presentations and handouts
+
+### Publish a series
+
+Use one landing page for an essay and decks intended to be followed in order.
+The current example is `content/resources/architecting-with-claude/index.md`:
+
+```yaml
+layout: series
+resource_type: series
+resource_topics: [engineering]
+resource_selected: true
+resource_featured: true
+essay:
+  title: Architecting with Claude
+  url: https://andrewphunter.com/writing/architecting-with-claude/
+  description: The reasoning behind the series.
+series_parts:
+  - working-with-claude
+  - architecting-with-claude-workflow
+  - testing-with-claude
+```
+
+Each listed deck keeps its own page bundle and downloads, and names the parent:
+
+```yaml
+resource_series: architecting-with-claude
+resource_series_order: 1
+resource_selected: false
+resource_featured: false
+```
+
+Keep the numbered position consistent with `series_parts`. The series page links
+the original essay and resolves each deck's PDF and PowerPoint from its bundle.
+Deck pages show the whole sequence, highlight the current deck, and offer previous
+and next links. Browsing lists feature the series once, rather than scattering its
+decks among unrelated resources. Search still finds each deck with its series and
+position identified. Do not add the essay again as a separate catalog entry just
+to populate this series.
+
+### Use stable resource URLs
 
 Use the landing page URL:
 

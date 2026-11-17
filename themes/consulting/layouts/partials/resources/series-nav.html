@@ -1,0 +1,16 @@
+{{ $page := . }}
+{{ with .Params.resource_series }}
+  {{ $series := site.GetPage (printf "/resources/%s" .) }}
+  {{ if not $series }}{{ errorf "%s: resource_series %q is unknown or unpublished" $page.File.Path . }}{{ end }}
+  <nav class="series-nav container" aria-label="{{ $series.Title }} series">
+    <div class="series-nav-heading"><a href="{{ $series.RelPermalink }}">{{ $series.Title }} · Full series</a><span>Deck {{ $page.Params.resource_series_order }} of {{ len $series.Params.series_parts }}</span></div>
+    <ol>
+      <li><a href="{{ $series.Params.essay.url }}"><span>Start here</span>The essay <span aria-hidden="true">↗</span></a></li>
+      {{ range $index, $id := $series.Params.series_parts }}
+        {{ with site.GetPage (printf "/resources/%s" $id) }}
+          <li><a href="{{ .RelPermalink }}"{{ if eq . $page }} aria-current="page"{{ end }}><span>Deck {{ add $index 1 }}</span>{{ .Title }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ol>
+  </nav>
+{{ end }}

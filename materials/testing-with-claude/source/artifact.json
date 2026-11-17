@@ -1,0 +1,15 @@
+{
+  "page_id": "page_657b563de72081918bcc36dd35ead3d7",
+  "artifactRef": "artifact_external_de0a78bf-45f3-4627-96b0-e877fd2d4ccb",
+  "url": "https://chatgpt.com/space/page_657b563de72081918bcc36dd35ead3d7",
+  "title": "Testing with Claude",
+  "status": "Prepared for advisory-site publication; downloads verified",
+  "revision_date": "2026-11-16",
+  "slides": 15,
+  "stateVersion": 12,
+  "resource_url": "https://advisory.andrewphunter.com/resources/testing-with-claude/",
+  "downloads": [
+    "testing-with-claude-v1.pdf",
+    "testing-with-claude-v1.pptx"
+  ]
+}

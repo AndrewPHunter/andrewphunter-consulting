@@ -1,0 +1,15 @@
+{
+  "page_id": "page_d733ac8e0f548191895b647db39de0dc",
+  "artifactRef": "artifact_external_ce7bfba6-49f4-4e71-8d54-5a70a600998a",
+  "url": "https://chatgpt.com/space/page_d733ac8e0f548191895b647db39de0dc",
+  "title": "Architecting with Claude",
+  "status": "Prepared for advisory-site publication; downloads verified",
+  "slides": 23,
+  "revision_date": "2026-11-16",
+  "stateVersion": 15,
+  "resource_url": "https://advisory.andrewphunter.com/resources/architecting-with-claude/",
+  "downloads": [
+    "architecting-with-claude-v1.pdf",
+    "architecting-with-claude-v1.pptx"
+  ]
+}

@@ -1,8 +1,18 @@
 {{- $items := slice -}}
 {{- range partial "resources/catalog.html" . -}}
+  {{- $item := . -}}
   {{- $body := "" -}}
+  {{- $kind := .kind -}}
+  {{- $description := .description -}}
+  {{- if not .external -}}
+    {{- with .page.Params.resource_series -}}
+      {{- $series := site.GetPage (printf "/resources/%s" .) -}}
+      {{- $kind = printf "Deck %d of %d" (int $item.page.Params.resource_series_order) (len $series.Params.series_parts) -}}
+      {{- $description = printf "Part of %s. %s" $series.Title $description -}}
+    {{- end -}}
+  {{- end -}}
   {{- if not .external -}}{{- $body = .page.Plain -}}{{- end -}}
-  {{- $items = $items | append (dict "id" .id "title" .title "description" .description "kind" .kind "format" .format "url" .url "topics" .topics "external" .external "body" $body) -}}
+  {{- $items = $items | append (dict "id" .id "title" .title "description" $description "kind" $kind "format" .format "url" .url "topics" .topics "external" .external "listed" .listed "body" $body) -}}
 {{- end -}}
 {{- $topics := slice -}}
 {{- range .Site.Data.resources -}}{{- $topics = $topics | append (dict "id" .id "label" .topic) -}}{{- end -}}

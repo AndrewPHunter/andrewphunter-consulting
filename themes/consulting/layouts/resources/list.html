@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $catalog := partial "resources/catalog.html" . }}
+{{ $catalog := where (partial "resources/catalog.html" .) "listed" true }}
 <header class="page-header container">
   <p class="eyebrow">Resources</p>
   <h1>Put the thinking to work.</h1>

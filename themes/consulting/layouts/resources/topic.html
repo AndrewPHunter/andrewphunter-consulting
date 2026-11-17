@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $catalog := partial "resources/catalog.html" . }}
+{{ $catalog := where (partial "resources/catalog.html" .) "listed" true }}
 {{ $topic := .Params.resource_topic }}
 {{ $items := where $catalog "topics" "intersect" (slice $topic) }}
 {{ $pager := partial "resources/pager.html" . }}

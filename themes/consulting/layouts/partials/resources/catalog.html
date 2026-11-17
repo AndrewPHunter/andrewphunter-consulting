@@ -2,7 +2,7 @@
 {{- $items := slice -}}
 {{- $ids := slice -}}
 {{- $topics := slice -}}
-{{- $kinds := dict "training" "Training" "deck" "Slide deck" "guide" "Guide" -}}
+{{- $kinds := dict "training" "Training" "deck" "Slide deck" "guide" "Guide" "series" "Series" -}}
 {{- range site.Data.resources -}}
   {{- $topic := .id -}}
   {{- $topics = $topics | append $topic -}}
@@ -17,14 +17,14 @@
       {{- errorf "External resource %q needs a unique id in data/resources.yaml" .title -}}
     {{- end -}}
     {{- $ids = $ids | append .id -}}
-    {{- $items = $items | append (merge . (dict "page" (site.GetPage (printf "/resource-links/%s" .id)) "topics" (slice $topic) "external" true "selected" (or .selected false) "featured" (or .featured false) "order" (printf "%06d-%012d-%s" (int (default 100 .weight)) 9999999999 .id))) -}}
+    {{- $items = $items | append (merge . (dict "page" (site.GetPage (printf "/resource-links/%s" .id)) "topics" (slice $topic) "external" true "listed" true "selected" (or .selected false) "featured" (or .featured false) "order" (printf "%06d-%012d-%s" (int (default 100 .weight)) 9999999999 .id))) -}}
   {{- end -}}
 {{- end -}}
 {{- range where site.RegularPages "Section" "resources" -}}
   {{- $page := . -}}
   {{- $id := default .File.ContentBaseName .Params.resource_id -}}
   {{- $kind := index $kinds .Params.resource_type -}}
-  {{- if not $kind -}}{{- errorf "%s: resource_type must be training, deck, or guide" .File.Path -}}{{- end -}}
+  {{- if not $kind -}}{{- errorf "%s: resource_type must be training, deck, guide, or series" .File.Path -}}{{- end -}}
   {{- if in $ids $id -}}{{- errorf "%s: resource id %q is already used" .File.Path $id -}}{{- end -}}
   {{- $ids = $ids | append $id -}}
   {{- if not .Params.resource_topics -}}{{- errorf "%s: provide at least one resource_topics value" .File.Path -}}{{- end -}}
@@ -32,6 +32,6 @@
     {{- if not (in $topics .) -}}{{- errorf "%s: unknown resource topic %q" $page.File.Path . -}}{{- end -}}
   {{- end -}}
   {{- $order := printf "%06d-%012d-%s" (int (default 100 .Params.resource_weight)) (sub 9999999999 .Date.Unix) $id -}}
-  {{- $items = $items | append (dict "id" $id "page" . "title" .Title "description" .Description "kind" $kind "format" .Params.resource_type "url" .RelPermalink "topics" .Params.resource_topics "external" false "selected" (or .Params.resource_selected false) "featured" (or .Params.resource_featured false) "order" $order) -}}
+  {{- $items = $items | append (dict "id" $id "page" . "title" .Title "description" .Description "kind" $kind "format" .Params.resource_type "url" .RelPermalink "topics" .Params.resource_topics "external" false "listed" (not .Params.resource_series) "selected" (or .Params.resource_selected false) "featured" (or .Params.resource_featured false) "order" $order) -}}
 {{- end -}}
 {{- return (sort $items "order") -}}

@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $page := . }}
+<article class="material-page series-page">
+  <header class="page-header container">
+    <p class="eyebrow"><a href="/resources/">Resources</a> / Series · Essay + three decks{{ if .Draft }} / Draft preview{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    <div class="prose series-intro">{{ .Content }}</div>
+    <nav class="series-jump-links" aria-label="Start the series">
+      <a class="button" href="{{ .Params.essay.url }}">Start with the essay <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="#decks">Get the three decks <span aria-hidden="true">↓</span></a>
+    </nav>
+  </header>
+  <div class="container series-content">
+    <section class="series-essay" aria-labelledby="essay-heading">
+      <div><p class="eyebrow">First, the essay</p><h2 id="essay-heading">The reasoning behind the work.</h2></div>
+      <div><p>{{ .Params.essay.description }}</p><a class="text-link" href="{{ .Params.essay.url }}">Read on andrewphunter.com <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section id="decks" aria-labelledby="decks-heading">
+      <div class="series-decks-heading"><p class="eyebrow">Then, use these with your team</p><h2 id="decks-heading">Three decks, in order.</h2></div>
+      <ol class="series-decks">
+        {{ range $index, $id := .Params.series_parts }}
+          {{ $part := site.GetPage (printf "/resources/%s" $id) }}
+          {{ if not $part }}{{ errorf "%s: series part %q is unknown or unpublished" $page.File.Path $id }}{{ end }}
+          {{ if ne $part.Params.resource_series $page.File.ContentBaseName }}{{ errorf "%s: series part %q must name its parent in resource_series" $page.File.Path $id }}{{ end }}
+          <li class="series-deck" id="deck-{{ add $index 1 }}">
+            <span class="series-number" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+            <div class="series-deck-copy">
+              <h3><a href="{{ $part.RelPermalink }}">{{ $part.Title }}</a></h3>
+              <p>{{ $part.Description }}</p>
+              <p class="series-duration">{{ $part.Params.duration }}</p>
+              <div class="series-downloads">
+                {{ range $part.Params.downloads }}
+                  {{ $label := .label }}
+                  {{ with $part.Resources.Get .file }}
+                    <a class="text-link" href="{{ .RelPermalink }}" download aria-label="{{ $part.Title }}: {{ $label }}">{{ $label }} <span aria-hidden="true">↓</span></a>
+                  {{ else }}{{ errorf "%s: download %q is missing from the page bundle" $part.File.Path .file }}{{ end }}
+                {{ end }}
+              </div>
+              <a class="text-link series-part-details" href="{{ $part.RelPermalink }}">About this deck <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  </div>
+</article>
+{{ partial "resources/training-cta.html" . }}
+{{ end }}

@@ -138,7 +138,7 @@ Fixture.
         engineering = Links((output / "resources/engineering/index.html").read_text())
         governance = Links((output / "resources/governance/index.html").read_text())
         assert len(landing.resource_hrefs) <= 3 * len(baseline["topics"])
-        total = sum("engineering" in item["topics"] for item in baseline["items"]) + 25
+        total = sum("engineering" in item["topics"] and item["listed"] for item in baseline["items"]) + 25
         total_pages = (total + 11) // 12
         all_items = []
         for number in range(1, total_pages + 1):

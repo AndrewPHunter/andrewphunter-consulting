@@ -3,6 +3,7 @@
 {{ $catalog := partial "resources/catalog.html" . }}
 {{ $kind := index (dict "training" "Training" "deck" "Slide deck" "guide" "Guide") .Params.resource_type }}
 <article class="material-page">
+  {{ partial "resources/series-nav.html" . }}
   <header class="page-header container">
     <p class="eyebrow"><a href="/resources/">Resources</a> / {{ $kind }}{{ if .Draft }} / Draft preview{{ end }}</p>
     <h1>{{ .Title }}</h1>
@@ -41,6 +42,7 @@
     {{ end }}
     <div class="prose material-body">{{ .Content }}</div>
   </div>
+  {{ partial "resources/series-next.html" . }}
   {{ with .Params.related_resources }}
     <section class="container material-related" aria-labelledby="related-heading">
       <h2 id="related-heading">Keep working through it.</h2>

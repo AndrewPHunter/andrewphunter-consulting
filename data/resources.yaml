@@ -45,7 +45,7 @@
 - id: engineering
   topic: Engineering in practice
   title: Follow the work into the implementation.
-  description: Public code and technical explanations from building inference engines, investigating model behavior, and measuring GPU performance.
+  description: Team presentations on working with coding agents, alongside public code and technical explanations from building and investigating systems.
   items:
     - id: plainsight-systems
       title: Plainsight Systems
